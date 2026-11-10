@@ -1,0 +1,110 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+.projects__grid {
+   display: grid;
+      // Автоматическая сетка: колонки подстраиваются под размер экрана (минимум 280px, максимум 1fr)
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       // Расстояние между карточками (строками и колонками)
+    gap: 24px; 
+    width: 100%; 
+}
+
+
+// Название блока приводим к единому с HTML виду: .project-card
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: to-rem(12); 
+  background-color: var(--color-brown); 
+  border-radius: to-rem(10);
+  border: solid 1px var(--color-border);
+  overflow: hidden; 
+
+  /* Анимации и оптимизация */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform; 
+
+  // Эффект при наведении на саму карточку
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+     /* Картинка */
+      &__image {
+        width: 100%;
+        height: 220px;     
+        object-fit: cover; 
+        display: block;    
+      }
+
+      /* Общие стили для тега внутри карточки */
+      &__tag {
+        position: absolute;
+        margin: to-rem(15);
+        padding: 2px 10px;
+        font-size: to-rem(12);
+        background-color: var(--color-accent);
+        border-radius: var(--radius-btn);
+        border: solid 1px;
+      }
+      &__tag:hover {
+        opacity: 80%;
+      }
+
+  /* Содержимое (Заголовок, описание) */
+  &__content {
+    padding: to-rem(20); // Рекомендуется добавить внутренний отступ для текста
+    width: 100%;
+  }
+  
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__secondary {
+      padding: 2px 10px;
+      border-radius: var(--radius-btn);
+      background-color: var(--color-background);
+      color: var(--color-title);
+   }
+
+  &__title {
+    font-size: to-rem(20);
+    font-weight: 600;
+    color: var(--color-title);
+    margin-bottom: to-rem(8);
+  }
+
+  &__specs {
+    color: var(--color-subtitle);
+    font-size: to-rem(14);
+  }
+
+  /* Нижняя часть карточки */
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: to-rem(15);
+  } 
+  &__price {
+    font-size: to-rem(18);
+    color: var(--color-title);
+  }
+  &__btn { 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: to-rem(10) to-rem(12); /* Внутренние отступы кнопки */
+    width: max-content;     /* Дополнительная страховка: ширина строго по тексту */
+    border-radius: var(--radius-btn);
+    background-color: var(--color-accent);
+  }
+}
+

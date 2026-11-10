@@ -1,0 +1,34 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: to-rem(2);
+  margin-right: to-rem(8);
+  margin-bottom: to-rem(50);
+  padding: to-rem(10) to-rem(15);
+  color: var(--color-title);
+  background-color: var(--color-background-2);
+  border: var(--border);
+  border-radius: var(--radius-btn);
+  transition: var(--transition-duration); 
+  cursor: pointer;
+
+  @include hover {
+    background-color: var(--color-accent);
+  }
+
+      // Начальное состояние стрелки
+      .btn-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease-in-out;
+      }
+       // Анимация стрелки при наведении на ЛЮБУЮ активную кнопку
+      &:hover, &:focus-within {
+        .btn-arrow {
+          transform: translateX(4px); // Стрелка плавно сдвигается вправо на 4px
+        }
+      }
+
+ }

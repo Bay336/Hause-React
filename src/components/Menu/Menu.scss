@@ -1,0 +1,42 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+.nav {
+  // стили для nav
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: to-rem(18);
+
+     @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: to-rem(20);
+    }
+
+  }
+
+  &__item {
+    margin-right: 20px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--color-subtitle);
+
+    // Стили для активного состояния
+    &--active {
+      color: var(--color-accent); 
+      font-weight: bold;
+    }
+  
+
+    @include hover {
+       color: var(--color-title);
+      }
+  }
+
+}

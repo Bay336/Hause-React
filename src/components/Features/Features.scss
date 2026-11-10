@@ -1,0 +1,73 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+.features {
+  padding: to-rem(96) 0;
+
+  &__content {
+    text-align: center;
+
+    p {
+      margin-top: to-rem(10);
+      color: var(--color-subtitle);
+    }
+
+    &-title {
+      margin: to-rem(25) auto;
+      max-width: 675px;
+    }
+  }
+   &__grid {
+     display: grid;
+      // Автоматическая сетка: колонки подстраиваются под размер экрана (минимум 280px, максимум 1fr)
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      // Расстояние между карточками (строками и колонками)
+     gap: 24px; 
+     width: 100%;
+     padding: to-rem(20);
+      // Стили для элементов внутри сетки (поддерживают оба ваших класса из HTML)
+       &-item {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: to-rem(12); // Расстояние между заголовком и подзаголовком
+         padding: to-rem(24);
+         background-color: var(--color-black); // Пример фонового цвета       карточки
+         border-radius: to-rem(10);// Скругление углов карточки
+         border: solid 1px var(--color-border);
+          /* Базовое состояние карточки */
+           /* Важно для плавности: указываем, какие свойства анимировать и за какое время */
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         will-change: transform; /* Подсказка браузеру для оптимизации */
+       }
+       /* Состояние при наведении */
+         .features__grid-item:hover {
+        /* Смещаем карточку вверх на 8px (минус означает движение вверх) */
+            transform: translateY(-8px);
+        /* Необязательно, но красиво: добавляем или усиливаем тень при поднятии */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+         }
+
+         &-icon {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: to-rem(10) to-rem(15);
+         background: var(--color-brown);
+         border-radius: 10px;
+         color: var(--color-accent);
+       }
+
+       h3 {
+         margin: 0;
+       }
+
+       &-subtitle {
+       margin: 0;
+       text-align: start;
+       font-size: to-rem(16);
+       color: var(--color-subtitle);
+       }
+  }
+ }
+ 

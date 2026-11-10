@@ -1,0 +1,116 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+
+$radius-btn: 8px;
+$transition-fast: all 0.25s ease-in-out;
+
+// 2. Миксин для адаптивности (Media Queries Mixin)
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+// 3. Стили компонента
+.home {
+  min-height: 80vh;
+  padding: to-rem(0) to-rem(16);
+  background-image: 
+     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%), //Градиент поверх картинки
+     url(../../assets/images/background.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-title);
+
+  @include mobile {
+    min-height: auto;
+    padding: to-rem(40) to-rem(16);
+  }
+
+ &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: to-rem(128) to-rem(32);
+    min-height: 80vh;
+    max-width: to-rem(800);
+
+    @include mobile {
+      padding: to-rem(10) to-rem(8);
+    }
+
+    &-discript {
+       max-width: to-rem(300);
+       padding: to-rem(2) to-rem(10);
+       text-align: center;
+       background-color: var(--color-background);
+       color: var(--color-subtitle);
+       font-size: to-rem(12);
+       font-weight: 400;
+       border-radius: var(--radius-btn);
+       margin-bottom: to-rem(24);
+     }
+ 
+      @include mobile {
+        font-size:to-rem(32)
+       }
+     }
+
+    p {
+      margin-bottom: to-rem(32);
+    }
+
+   &-buttons {
+
+       // Базовый класс для ВСЕХ кнопок в этом блоке
+   .button, 
+   &-btn { 
+     
+      // ПЕРВАЯ КНОПКА (Активная по умолчанию)
+      &:not(.button--transparent) {
+        background-color: var(--color-accent);
+        border: 2px solid var(--color-accent);
+        color: var(--color-title); // Или ваш контрастный цвет текста
+      }
+
+      // ВТОРАЯ КНОПКА (Прозрачная, пока не активна)
+      &.button--transparent {
+        background-color: transparent; 
+        border: 2px solid var(--color-accent);     
+        color: var(--color-title);                
+
+        &:hover, &:focus-within {
+          background-color: var(--color-accent); // При наведении окрашивается в акцентный цвет
+          color: var(--color-title); // Текст становится белым
+        }
+      }
+
+      @include mobile {
+        margin-bottom: to-rem(15);
+      }
+    }
+  
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+      padding: to-rem(10) to-rem(5)
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: to-rem(25);
+
+      @include mobile {
+        align-items: flex-start;
+        gap: to-rem(9);
+      }
+    }
+
+  }
+

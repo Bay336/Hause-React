@@ -1,0 +1,27 @@
+@use './helpers/functions' as *;
+
+:root {
+  --color-background:   #2e251f;
+  --color-brown:        #2f2722;
+  --color-background-2: #1E1815;
+  --color-black:        #251d18;
+  --color-accent:       #b3560f;
+  --color-title:        #FFFFFF;
+  --color-subtitle:     #BCB09F;
+
+  --color-border: #473429;
+  
+  --radius-btn: 8px;
+
+
+  --font-family-base: 'Inter';
+
+  $container-desktop-width: 1152;
+  $container-laptop-width: 1080;
+
+  --container-width: #{fluid($container-desktop-width, $container-laptop-width)};
+  --container-padding-x: 16px;
+
+
+  --transition-duration: 0.2s;
+}

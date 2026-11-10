@@ -1,0 +1,153 @@
+@use 'sass:math';
+@use './helpers' as *;
+
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include fluid-text(14, 10);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base), sans-serif;
+  letter-spacing: 0.8px;
+  background-color: var(--color-background-2);
+  line-height: 1.2;
+}
+
+// Пример глобальных переменных для тем (можно разместить в основном файле стилей)
+body.light-theme {
+  background-color: var(--color-subtitle);
+  .nav__link {
+    color: var(--color-background-2);
+  }
+    .nav__link {
+     @include hover {
+       color: var(--color-accent);
+     }
+    }
+
+  .home__wrapper-discript {
+    background-color: var(--color-subtitle);
+    color: var(--color-background);
+  }
+
+  .features__content-p {
+    color: var(--color-background-2);
+  }
+ 
+}
+
+body.dark-theme {
+
+  // Здесь можно автоматически перекрашивать шапку при смене темы
+  .header {
+    background-color: var(--color-background-2);
+    border-bottom: 1px solid #333;
+   }
+
+  
+
+  }
+
+
+
+h1,
+.h1 {
+  @include fluid-text(58, 28);
+  line-height: 1.0;
+  font-size: to-rem(48);
+  font-weight: 700;
+}
+
+h2,
+.h2 {
+  @include fluid-text(32, 20);
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-title)
+}
+
+h3,
+.h3 {
+  @include fluid-text(20, 18);
+  color: var(--color-title);
+  font-size: to-rem(20);
+  font-weight: 700;
+}
+
+h4,
+.h4 {
+  @include fluid-text(24, 18);
+
+  font-weight: 400;
+}
+
+h5,
+.h5 {
+  @include fluid-text(22, 18);
+
+  font-weight: 400;
+}
+
+h6,
+.h6 {
+  @include fluid-text(20, 16);
+
+  font-weight: 400;
+}
+
+p,.p {
+   font-size: to-rem(14);
+   color: var(--color-subtitle);
+
+     @include mobile {
+       font-size: 10px;
+     }
+
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+
+}
+
+/* Начальное состояние: кнопка полупрозрачная */
+.button--transparent {
+  opacity: 0.5; /* Степень прозрачности (0.4 = 40%). Настройте под свой дизайн */
+  transition: opacity 0.3s ease; /* Плавный переход при наведении */
+}
+
+/* Состояние при наведении (hover) или фокусе (focus) */
+.button--transparent:hover,
+.button--transparent:focus-within {
+  opacity: 1; /* Становится полностью видимой */
+}
+
+a {
+  color: inherit; 
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; // Отступ между текстом и стрелкой
+  width: 100%;
+  height: 100%;
+
+  @include hover {
+    color: var(--color-title);
+  }
+
+}
+
+:focus-visible {
+  @include focus-visible;
+}
