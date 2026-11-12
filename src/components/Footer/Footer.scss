@@ -1,0 +1,184 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+
+.footer {
+  padding: 48px 0 24px;
+  background-color: var(--color-accent);
+  color: var(--color-text, #1a1a1a);
+
+  // Основная сетка футера (Десктоп > 1023px)
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) auto auto;
+    gap: 32px 64px;
+    align-items: start;
+
+    @include tablet {
+      // Планшеты (<= 1023px): 2 колонки сверху, навигация снизу на всю ширину
+      grid-template-columns: 1fr auto;
+      gap: 32px 40px;
+    }
+
+    @include mobile {
+      // Мобильные (<= 767px): все блоки в 1 колонку
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  &__about {
+    max-width: 320px;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+
+  &__logo {
+    margin: 0 0 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: inherit;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: inherit;
+    opacity: 0.8;
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__nav {
+    @include tablet {
+      grid-column: 1 / -1;
+      order: 3;
+    }
+
+    @include mobile {
+      order: 2;
+    }
+  }
+
+  // Навигация: 4 колонки в ряд, 5-й пункт («Контакты») переносится
+  &__nav-list {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 12px 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include tablet {
+      grid-template-columns: repeat(3, max-content);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, max-content);
+      gap: 12px 32px;
+    }
+
+    @include mobile-s {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:not(:first-child):not(:last-child)::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--color-black, currentColor);
+      flex-shrink: 0;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: inherit;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  // Блок контактов
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include mobile {
+      order: 3;
+    }
+  }
+
+  &__phone {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__schedule {
+    margin: to-rem(10) 0;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  &__divider {
+    border: none;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.15;
+    margin: 32px 0 20px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile-s {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+
+  &__copyright {
+    margin: 0 auto;
+    font-size: 13px;
+    opacity: 0.6;
+  }
+
+  @include mobile {
+    padding: 36px 0 20px;
+  }
+}

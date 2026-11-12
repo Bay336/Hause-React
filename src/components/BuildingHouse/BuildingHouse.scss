@@ -1,0 +1,87 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
+.building {
+
+   // Адаптивный вертикальный padding: от 96px на десктопе до 48px на мобильных
+  padding: #{fluid(96, 20)} 0;
+
+  &__content {
+    text-align: center;
+
+    &-title {
+
+       // Адаптивные отступы: сверху/снизу от 25px до 16px
+      margin: #{fluid(25, 16)} auto;
+      max-width: to-rem(675);
+    }
+    p {
+      margin-top: to-rem(10);
+      color: var(--color-subtitle);
+    }
+  }
+
+   &__grid {
+    display: grid;
+    // Адаптивный зазор между карточками: от 15px на десктопе до 12px на мобильных
+    gap: #{fluid(15, 12)}; 
+    // Адаптивный внутренний отступ сетки: от 20px до 0px на мобилках (чтобы не съедать экран)
+    padding: #{fluid(20, 0)};
+
+    // ПОДВИЖНОСТЬ СЕТКИ:
+    // По умолчанию на мобильных карточки встают друг под друга (в одну колонку)
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+
+    // Начиная с планшетов (например, от 768px) выстраиваем карточки в горизонтальный ряд
+    @media (min-width: 768px) {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr; // Карточки будут одинаковой ширины
+    }
+       &-item {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: to-rem(12);
+          // На мобилках карточка растягивается на всю ширину (100%), на десктопе ограничивается
+         width: 100%;
+           @media (min-width: 768px) {
+             max-width: to-rem(268);
+           }
+             // Адаптивный padding внутри карточки: от 24px до 16px
+           padding: #{fluid(24, 16)};
+           background-color: var(--color-black); 
+           border-radius: to-rem(10);
+           border: solid 1px var(--color-border);
+            
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+           will-change: transform;
+     
+           &:hover {
+             transform: translateY(-8px);
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+           }
+         }
+
+         &-icon {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: to-rem(10) to-rem(15);
+         background: var(--color-brown);
+         border-radius: 10px;
+         color: var(--color-accent);
+       }
+
+       h3 {
+         margin: 0;
+       }
+
+       p {
+       margin: 0;
+       text-align: start;
+       }
+  }
+
+ }
+ 

@@ -6,7 +6,7 @@
   align-items: center;
   column-gap: to-rem(2);
   margin-right: to-rem(8);
-  margin-bottom: to-rem(50);
+  margin-bottom: #{fluid(50, 20)};
   padding: to-rem(10) to-rem(15);
   color: var(--color-title);
   background-color: var(--color-background-2);
@@ -15,10 +15,12 @@
   transition: var(--transition-duration); 
   cursor: pointer;
 
-  @include hover {
-    background-color: var(--color-accent);
-  }
-
+   // ИСПОЛЬЗУЕМ ВАШ МИКСИН ДЛЯ ХОВЕРА И ТАЧА:
+       &:hover {
+        transform: translateY(-5px);
+        transition: .4s;
+        background: var(--color-accent); 
+      }
       // Начальное состояние стрелки
       .btn-arrow {
         display: inline-block;

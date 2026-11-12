@@ -2,7 +2,7 @@
 @use '../../styles/helpers/' as *;
 
 .features {
-  padding: to-rem(96) 0;
+  padding: #{fluid(96, 20)} 0;
 
   &__content {
     text-align: center;
@@ -17,7 +17,8 @@
       max-width: 675px;
     }
   }
-   &__grid {
+
+  &__grid {
      display: grid;
       // Автоматическая сетка: колонки подстраиваются под размер экрана (минимум 280px, максимум 1fr)
      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -62,11 +63,9 @@
          margin: 0;
        }
 
-       &-subtitle {
+       p {
        margin: 0;
        text-align: start;
-       font-size: to-rem(16);
-       color: var(--color-subtitle);
        }
   }
  }

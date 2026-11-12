@@ -2,7 +2,8 @@
 @use '../../styles/helpers/' as *;
 
 .projects {
-  padding: to-rem(96) 0;
+
+  padding: #{fluid(96, 20)} 0;
   background-color: var(--color-background);
 
   &__content {

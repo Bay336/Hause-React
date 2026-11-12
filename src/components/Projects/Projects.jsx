@@ -25,31 +25,6 @@ const Projects =() => {
        </div>
 
      <CardsHome />
-       {/*
-      <div className='projects__grid'>
-      
-          {siteData.projectsData.map((project) => (
-            <article key={project.id} className='projects__grid-card'>
-              <img src={project.image} alt={project.title} />
-               <span className='tag'>{project.tag}</span>
-              <div className="projects__grid-descript">
-                 <h3>{project.title}</h3>
-                 <p className='project-desc'>{project.desc}</p>
-                 <ul className='project-specs'>
-                   <li>Технология: {project.tech}</li>
-                   <li>Площадь: {project.area}</li>
-                   <li>Этажность: {project.floors}</li>
-                   <li>Комнаты: {project.rooms}</li>
-                   <li>Срок: {project.term}</li>
-                 </ul>
-                 <div className='project-price'>{project.price}</div>
-                 <a href={project.link} className='btn'>Подробнее</a>
-              </div>
-            </article>
-          ))}
-          
-      </div>
-     */}
 
     </div>
    </section>

@@ -5,17 +5,11 @@
 $radius-btn: 8px;
 $transition-fast: all 0.25s ease-in-out;
 
-// 2. Миксин для адаптивности (Media Queries Mixin)
-@mixin mobile {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
+
 
 // 3. Стили компонента
 .home {
   min-height: 80vh;
-  padding: to-rem(0) to-rem(16);
   background-image: 
      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%), //Градиент поверх картинки
      url(../../assets/images/background.webp);
@@ -24,22 +18,18 @@ $transition-fast: all 0.25s ease-in-out;
   background-repeat: no-repeat;
   color: var(--color-title);
 
-  @include mobile {
-    min-height: auto;
-    padding: to-rem(40) to-rem(16);
-  }
 
  &__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: to-rem(128) to-rem(32);
+    // Адаптивный вертикальный padding: от 96px на десктопе до 48px на мобильных
+    padding: #{fluid(96, 20)} 0;
+    font-size: #{fluid(16, 12)};
     min-height: 80vh;
     max-width: to-rem(800);
 
-    @include mobile {
-      padding: to-rem(10) to-rem(8);
-    }
+   
 
     &-discript {
        max-width: to-rem(300);
@@ -53,9 +43,6 @@ $transition-fast: all 0.25s ease-in-out;
        margin-bottom: to-rem(24);
      }
  
-      @include mobile {
-        font-size:to-rem(32)
-       }
      }
 
     p {
