@@ -2,22 +2,32 @@
 @use '../../styles/helpers/' as *;
 
 .projects__grid {
-   display: grid;
-      // Автоматическая сетка: колонки подстраиваются под размер экрана (минимум 280px, максимум 1fr)
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-       // Расстояние между карточками (строками и колонками)
-    gap: 24px; 
-    width: 100%; 
-}
+  display: grid;
+  // Всегда делим контейнер на 3 равные колонки, даже если карточка всего 1 или 2
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: to-rem(24);
+  align-items: stretch; // Выравнивает карточки в одном ряду по высоте
+   }
 
-
+      // Адаптив для планшетов и телефонов
+      @media (max-width: 1024px) {
+        .projects__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      
+      @media (max-width: 640px) {
+        .projects__grid {
+          grid-template-columns: 1fr;
+        }
+      }
 // Название блока приводим к единому с HTML виду: .project-card
 .project-card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: to-rem(12); 
+  height: 100%;
   background-color: var(--color-brown); 
   border-radius: to-rem(10);
   border: solid 1px var(--color-border);
@@ -31,11 +41,6 @@
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-
-   @include mobile {
-
-
   }
 
      /* Картинка */
@@ -60,57 +65,107 @@
         opacity: 80%;
       }
 
-  /* Содержимое (Заголовок, описание) */
-  &__content {
-    padding: to-rem(20); // Рекомендуется добавить внутренний отступ для текста
-    width: 100%;
-  }
-  
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__secondary {
-      padding: 2px 10px;
-      font-size: #{fluid(12, 10)};
-      border-radius: var(--radius-btn);
-      background-color: var( --color-background-2);
-      color: var(--color-title);
-   }
+       // Бейдж технологии в правом верхнем углу фото (для каталога)
+      &__tech-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        padding: 4px 12px;
+        background: rgba(24, 20, 17, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        color: #fff;
+        font-size: 12px;
+      } 
 
-  &__title {
-    font-size: to-rem(20);
-    font-weight: 600;
-    color: var(--color-title);
-    margin-bottom: to-rem(8);
-  }
-
-  &__specs {
-    color: var(--color-subtitle);
-    font-size: to-rem(14);
-  }
+       /* Содержимое (Заголовок, описание) */
+       &__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; 
+        padding: to-rem(10); // Рекомендуется добавить внутренний отступ для текста
+        width: 100%;
+       }
+       
+       &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+       }
+       &__secondary {
+         padding: 2px 10px;
+         font-size: #{fluid(12, 10)};
+         border-radius: var(--radius-btn);
+         background-color: var( --color-background-2);
+         color: var(--color-title);
+        }
+     
+       &__title {
+        font-size: to-rem(20);
+        font-weight: 600;
+        color: var(--color-title);
+        margin-bottom: to-rem(8);
+       }
+     
+       &__specs-grid {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr)); // Две равные колонки
+         gap: 10px 16px; // 10px отступ между строками, 16px между столбцамимежду плашками
+         margin: 16px 0;
+         padding: 0;
+         list-style: none;
+         color: var(--color-subtitle);
+         font-size: to-rem(12);
+       }
+     
+        &__features {
+         display: flex;
+         flex-wrap: wrap;        // Автоматический перенос на новую строку при нехватке места
+         align-items: center;
+         gap: to-rem(8);               // Одинаковый отступ 8px по горизонтали и вертикали между плашками
+         margin-top: to-rem(10);
+         padding-bottom: to-rem(20);
+       }
+     
+       &__feature-tag {
+         display: inline-flex;
+         align-items: center;
+         padding: to-rem(5) to-rem(12);
+         background-color: var(--color-black); // Тёмно-коричневый фон плашки как на макете
+         border-radius: to-rem(999);      // Полное скругление краёв (форма капсулы)
+         font-size: to-rem(12);
+         font-weight: 400;
+         color: var(--color-subtitle);
+         white-space: nowrap;       // Запрещаем перенос слов внутри самой плашки
+       }
 
   /* Нижняя часть карточки */
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: to-rem(15);
-  } 
-  &__price {
-    font-size: to-rem(18);
-    color: var(--color-title);
-  }
-  &__btn { 
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: to-rem(10) to-rem(12); /* Внутренние отступы кнопки */
-    width: max-content;     /* Дополнительная страховка: ширина строго по тексту */
-    border-radius: var(--radius-btn);
-    background-color: var(--color-accent);
-  }
+       &__footer {
+         margin-top: auto; 
+         padding-top: 20px;
+         border-top: 1px solid var(--color-subtitle); 
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+       } 
+      
+       &__price-label {
+         font-size: to-rem(12);
+         margin-bottom: 20px;
+         color: var(--color-subtitle);
+       }
+       &__price {
+         font-size: to-rem(18);
+         color: var(--color-title);
+       }
+       &__btn { 
+         display: inline-flex;
+         justify-content: center;
+         align-items: center;
+         padding: to-rem(10) to-rem(12); /* Внутренние отступы кнопки */
+         width: max-content;     /* Дополнительная страховка: ширина строго по тексту */
+         border-radius: var(--radius-btn);
+         background-color: var(--color-accent);
+       }
 }
 

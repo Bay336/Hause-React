@@ -57,9 +57,11 @@ body.dark-theme {
 
 h1,
 .h1 {
+  margin: 0;
   line-height: 1.0;
   font-size: #{fluid(48, 35)};
   font-weight: 700;
+  color: var(--color-title);
 }
 
 h2,

@@ -1,5 +1,26 @@
+@use 'sass:math';
+@use '../../styles/helpers/' as *;
+
 .catalog {
-  background-color: rgb(36, 177, 158);
+
+.catalog-header {
+     background-color: var(--color-brown);
+     padding: #{fluid(80, 30)};
+       h1 {
+         margin-bottom: to-rem(16);
+         }
+        &__subtitle {
+          max-width: 600px; /* Задайте нужную максимальную ширину */
+          width: 100%;      /* На узких экранах блок займет всю доступную ширину */
+          line-height: 1.5; /* Для комфортного чтения в 2–3 строки */
+        }
+    } 
+  
+  &__content {
+      padding: #{fluid(65, 20)};
+    }
+
 
 
 }
+  

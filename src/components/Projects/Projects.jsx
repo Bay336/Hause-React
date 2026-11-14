@@ -17,7 +17,7 @@ const Projects =() => {
        <div className="projects__content-subtitle">
          <p>Три дома, которые чаще всего выбирают наши заказчики</p>
          <Button className='projects__wrapper-btn button button--transparent '>
-         <Link to='./project'>
+         <Link to='./catalog'>
             <span>Весь каталог</span>
             <span className='btn-arrow'> →</span>
          </Link>
