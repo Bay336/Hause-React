@@ -41,7 +41,7 @@ const matchesMaterial =
       <Header />
 
       {/* Шапка */}
-      <section className="catalog-header">
+      <section className="catalog__header">
         <div className="container">
           <h1>Каталог домов</h1>
           <p className="catalog-header__subtitle">
@@ -49,7 +49,8 @@ const matchesMaterial =
           </p>
         </div>
       </section>
-        {/* передаем все нужные пропсы в компонент Filtr */}
+
+      {/* передаем все нужные пропсы в компонент Filtr */}
         <Filter
           selectedMaterial={selectedMaterial}
           setSelectedMaterial={setSelectedMaterial}
@@ -59,23 +60,23 @@ const matchesMaterial =
         />
       <hr className="catalog__divider" />
 
-        {/* Сетка проектов */}
+        {/* Сетка проектов (Карточки) */}
         <div className="catalog__content container">
           <CardsHome items={filteredProjects} limit={6} isCatalog={true} />
         </div>
         
 
         {/* Баннер индивидуального проекта */}
-        <section className="custom-project-cta">
+        <section className="custom-project ">
           <div className="container">
-            <div className="custom-project-cta__box">
-              <h2 className="custom-project-cta__title">Не нашли подходящий проект?</h2>
-              <p className="custom-project-cta__text">
+            <div className="custom-project__box">
+              <h3 className="custom-project__title">Не нашли подходящий проект?</h3>
+              <p className="custom-project__text">
                 Спроектируем дом с нуля под ваш участок и бюджет. Эскизный проект — бесплатно при заключении договора.
               </p>
               <button
                 type="button"
-                className="btn btn--primary btn--large"
+                className="button btn--primary btn--large"
                 onClick={() => console.log('Открыть форму обсуждения проекта')}
               >
                 Обсудить свой проект

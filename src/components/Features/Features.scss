@@ -49,16 +49,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
          }
 
-         &-icon {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         padding: to-rem(10) to-rem(15);
-         background: var(--color-brown);
-         border-radius: 10px;
-         color: var(--color-accent);
-       }
-
        h3 {
          margin: 0;
        }

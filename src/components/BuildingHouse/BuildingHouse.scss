@@ -41,10 +41,13 @@
        &-item {
          display: flex;
          flex-direction: column;
-         align-items: flex-start;
-         gap: to-rem(12);
-          // На мобилках карточка растягивается на всю ширину (100%), на десктопе ограничивается
-         width: 100%;
+         align-items: flex-start; // Прижимаем иконку и блоки строго к левому краю
+         text-align: left;        // Выравниваем весь текст по левому краю
+         padding: to-rem(24);
+         background-color: var(--color-brown);
+         border: 1px solid var(--color-border);
+         border-radius: to-rem(12);
+         
            @media (min-width: 768px) {
              max-width: to-rem(268);
            }
@@ -63,18 +66,10 @@
            }
          }
 
-         &-icon {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         padding: to-rem(10) to-rem(15);
-         background: var(--color-brown);
-         border-radius: 10px;
-         color: var(--color-accent);
-       }
-
        h3 {
          margin: 0;
+         min-height: 2.6em; 
+         margin-bottom: to-rem(12);
        }
 
        p {

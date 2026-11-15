@@ -66,7 +66,7 @@ projectsData:  [
     bathrooms: '2 санузла',
     term: '3 месяца',
     price: '6 900 000 ₽',
-    link: '/projects/skandi-120',
+    link: './catalog',
       features: [
         'Гараж на 2 авто',
         'Кабинет',
@@ -93,7 +93,7 @@ projectsData:  [
     rooms: '4 спальни',
     term: '5 месяцев',
     price: '12 400 000 ₽',
-    link: '/projects/shale-180',
+    link: './catalog',
      features: [
         'Веранда',
         'Печь-камин',
@@ -119,7 +119,7 @@ projectsData:  [
     rooms: '4 спальни',
     term: '4,5 месяца',
     price: '11 200 000 ₽',
-    link: '/projects/dvorik-160',
+    link: './catalog',
      features: [
         'Второй свет',
         'Каминная зона',

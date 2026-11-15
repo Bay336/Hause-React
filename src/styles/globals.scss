@@ -75,7 +75,7 @@ h2,
 h3,
 .h3 {
   color: var(--color-title);
-  font-size: #{fluid(20, 18)};
+  font-size: #{fluid(18, 16)};
   font-weight: 400;
 }
 
@@ -144,6 +144,17 @@ a {
   }
 
 }
+ .icon {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: to-rem(10) to-rem(15);
+         margin-bottom: to-rem(15);
+         background: var(--color-border);
+         border-radius: 10px;
+         color: var(--color-accent);
+       }
+ 
 
 :focus-visible {
   @include focus-visible;

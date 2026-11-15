@@ -28,7 +28,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="footer__nav-item">
-                <Link className="footer__nav-link" to="/building">
+                <Link className="footer__nav-link" to="/construction">
                   Строительство
                 </Link>
               </li>

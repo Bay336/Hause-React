@@ -8,6 +8,7 @@ import Construction from './pages/Construction/Construction'
 import About from './pages/About/About'
 import Contacts from './pages/Contacts/Contacts'
 import NotFound from './pages/NotFound/NotFound' // страница 404
+import ScrollToTop from './components/ScrollToTo/ScrollToTo';
 
 // Импорт общих стилей, если есть
 import './App.scss'
@@ -26,6 +27,8 @@ const App = () => {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <BrowserRouter>
+      {/* Компонент будет срабатывать при любом переходе между страницами */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />

@@ -28,13 +28,13 @@ const Home = () => {
                </p>
                <div className='home__wrapper-buttons'>
                 <Button className='home__wrapper-btn button button--transparent '>
-                  <Link to='./project'>
+                  <Link to='./catalog'>
                    <span>Выбрать проект дома</span>
                    <span className='btn-arrow'> →</span>
                    </Link>
                 </Button >
                 <Button className='home__wrapper-btn button button--transparent'>
-                  <Link to='./consul'>
+                  <Link to='./contacts'>
                     <span>Получить консультацию</span>
                     <span className='btn-arrow'> →</span>
                   </Link>

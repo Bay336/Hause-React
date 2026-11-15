@@ -118,6 +118,7 @@
          font-size: to-rem(12);
        }
      
+     
         &__features {
          display: flex;
          flex-wrap: wrap;        // Автоматический перенос на новую строку при нехватке места
@@ -142,12 +143,18 @@
   /* Нижняя часть карточки */
        &__footer {
          margin-top: auto; 
-         padding-top: 20px;
-         border-top: 1px solid var(--color-subtitle); 
+         padding-top: to-rem(20);
          display: flex;
          align-items: center;
          justify-content: space-between;
        } 
+
+        // Линия появится ТОЛЬКО в каталоге (где у карточки есть класс project-card--catalog)
+         &--catalog {
+           .project-card__footer {
+             border-top: 1px solid var(--color-subtitle);
+           }
+         }
       
        &__price-label {
          font-size: to-rem(12);
@@ -167,5 +174,8 @@
          border-radius: var(--radius-btn);
          background-color: var(--color-accent);
        }
+
+       // Переопределяем только для режима каталога
+ 
 }
 
