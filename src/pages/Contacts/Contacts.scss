@@ -1,130 +1,84 @@
 @use 'sass:math';
 @use '../../styles/helpers/' as *;
 
-/* Базовые переменные цветовой палитры с макета */
-:root {
-  --bg-page: #181412;
-  --bg-card: #211c19;
-  --bg-input: #28221e;
-  --bg-icon-box: #2c221b;
-  --border-card: #322a25;
-  --border-focus: #e07a35;
-  --accent-orange: #e07a35;
-  --accent-orange-hover: #ea8642;
-  --text-primary: #f5f2ef;
-  --text-secondary: #a89f99;
-  --text-muted: #7d746e;
-  --text-on-accent: #181412;
-  --container-width: 1140px;
-}
 
 /* Общие стили страницы */
-.contacts-page {
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-  padding: 56px 20px 100px;
-  min-height: 100vh;
+.contacts {
+  background-color: var(--color-border);
 }
 
-.contacts-header__container,
-.contacts-main__container,
-.contacts-faq__container {
-  max-width: var(--container-width);
-  margin: 0 auto;
-}
+
 
 /* =========================================
    ШАПКА СТРАНИЦЫ (contacts-header)
    ========================================= */
 .contacts-header {
   margin-bottom: 48px;
+  padding: #{fluid(60, 40)};
+
+    &__subtitle {
+      max-width: to-rem(580);
+      margin-top: to-rem(20);
+    }
 }
 
-.contacts-header__title {
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 12px;
-  line-height: 1.15;
-}
 
-.contacts-header__subtitle {
-  font-size: 16px;
-  color: var(--text-secondary);
-  max-width: 580px;
-  margin: 0;
-  line-height: 1.55;
-}
 
 /* =========================================
    ОСНОВНАЯ СЕТКА (contacts-main)
    ========================================= */
 .contacts-main {
-  margin-bottom: 110px;
-}
+  padding: #{fluid(60, 20)};
+  background-color: var(--color-black);
 
-.contacts-main__container {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 28px;
-  align-items: start;
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: to-rem(28);
+      align-items: start;
+    }
 }
 
 /* Левая колонка: список карточек */
 .contacts-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: to-rem(16);
 }
 
 /* Карточка контакта (contact-card) */
 .contact-card {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: to-rem(16);
+  background-color: var(--color-background-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  padding: to-rem(20) to-rem(24);
   transition: border-color 0.25s ease;
 }
 
 .contact-card:hover {
-  border-color: rgba(224, 122, 53, 0.5);
-}
-
-.contact-card__icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: var(--bg-icon-box);
-  border: 1px solid rgba(224, 122, 53, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-card__icon {
-  font-size: 18px;
-  color: var(--accent-orange);
+  border-color: var(--color-accent);
 }
 
 .contact-card__body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  color: var(--color-subtitle);
 }
 
 .contact-card__label {
   font-size: 12px;
-  color: var(--text-secondary);
 }
 
 .contact-card__value {
-  font-size: 16px;
+  text-align: start;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-title);
   margin: 0;
-  line-height: 1.35;
 }
 
 .contact-card__value--link {
@@ -133,12 +87,11 @@
 }
 
 .contact-card__value--link:hover {
-  color: var(--accent-orange);
+  color: var(--color-accent);
 }
 
 .contact-card__note {
   font-size: 13px;
-  color: var(--text-muted);
   margin-top: 2px;
 }
 
@@ -146,23 +99,16 @@
    ПРАВАЯ КОЛОНКА: Форма (contact-form-box)
    ========================================= */
 .contact-form-box {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 16px;
-  padding: 32px;
-}
-
-.contact-form-box__title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 8px;
+  background-color: var(--color-background-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  padding: to-rem(24);
 }
 
 .contact-form-box__subtitle {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin: 0 0 24px;
+  font-size: to-rem(14);
+  color: var(--color-subtitle);
+  margin: 0 0 to-rem(24);
 }
 
 .contact-form {
@@ -178,61 +124,50 @@
 }
 
 .contact-form__label {
-  font-size: 13px;
+  font-size: to-rem(13);
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--color-title);
 }
 
 .contact-form__input,
 .contact-form__textarea {
-  background-color: var(--bg-input);
-  border: 1px solid var(--border-card);
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 14px;
-  font-family: inherit;
-  color: var(--text-primary);
+  background-color: var(--color-black);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  padding: to-rem(12) to-rem(14);
+  font-size: to-rem(14);
+  color: var(--color-subtitle);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-form__input::placeholder,
 .contact-form__textarea::placeholder {
-  color: var(--text-muted);
+  color: var(--color-subtitle);
 }
 
 .contact-form__input:focus,
 .contact-form__textarea:focus {
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(224, 122, 53, 0.15);
+  border-color: var(--color-border);
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 .contact-form__textarea {
   resize: vertical;
-  min-height: 96px;
+  min-height: torem(96);
 }
 
 /* Кнопка отправки */
 .contact-form__submit {
-  margin-top: 4px;
-  background-color: var(--accent-orange);
-  color: var(--text-on-accent);
-  border: none;
-  border-radius: 10px;
-  padding: 14px 20px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-top: 4px;
+  font-weight: 600;
+  background-color: var(--color-accent);
+  color: var(--color-black);
   transition: background-color 0.2s ease, transform 0.15s ease;
-}
-
-.contact-form__submit:hover {
-  background-color: var(--accent-orange-hover);
 }
 
 .contact-form__submit:active {
@@ -245,36 +180,36 @@
 }
 
 .contact-form__policy {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: to-rem(12);
+  color: var(--color-subtitle);
   text-align: center;
   margin: 0;
-  line-height: 1.4;
 }
 
 /* =========================================
    НИЖНИЙ БЛОК: Частые вопросы (contacts-faq)
    ========================================= */
+   .contacts-faq {
+    padding: to-rem(60);
+   
+  
+   }
 .contacts-faq__container {
-  max-width: 780px;
+  max-width: to-rem(780);
+  margin: 0 auto;
+
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: to-rem(40);  
 }
 
-.section-header__title {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 10px;
-}
 
 .section-header__subtitle {
   font-size: 15px;
-  color: var(--text-secondary);
-  margin: 0;
+  color: var(--color-subtitle);
+  margin: to-rem(15);
 }
 
 .faq-list {
@@ -283,52 +218,51 @@
 }
 
 .faq-item {
-  border-bottom: 1px solid var(--border-card);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .faq-item__trigger {
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   text-align: left;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-subtitle);
+  padding: 15px 0;
   cursor: pointer;
-  color: var(--text-primary);
-  font-family: inherit;
+  color: var(--color-title);
 }
 
 .faq-item__question {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: to-rem(13);
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .faq-item__trigger:hover .faq-item__question {
-  color: var(--accent-orange);
+  color: var(--color-accent);
 }
 
 .faq-item__arrow {
   font-size: 18px;
-  color: var(--text-secondary);
+  color: var(--color-subtitle);
   flex-shrink: 0;
   line-height: 1;
 }
 
 .faq-item__content {
-  padding-bottom: 20px;
+  padding: to-rem(10);
 }
 
 .faq-item__answer {
   font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-secondary);
+
+  color: var(--color-subtitle);
   margin: 0;
-  max-width: 680px;
+  max-width: to-rem(680);
 }
 
 /* =========================================

@@ -20,7 +20,7 @@
   &__controls {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: to-rem(12);
 
       @include mobile {

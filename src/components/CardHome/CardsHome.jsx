@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import siteData from '../../siteData';
+import siteData from '../../siteData.jsx';
 import './CardsHome.scss';
 
 const CardsHome = ({ items, limit = 3, isCatalog = false }) => {

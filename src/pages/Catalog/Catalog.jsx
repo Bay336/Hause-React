@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import siteData from '../../siteData';
-
+import siteData from '../../siteData.jsx';
+import { Link } from 'react-router-dom';
 import Filter from '../../components/Filter/Filter';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
@@ -13,6 +13,9 @@ import CardsHome from '../../components/CardHome/CardsHome';
 
 
 const Catalog = () => {
+
+
+
   const [selectedMaterial, setSelectedMaterial] = useState('all');
   const [selectedArea, setSelectedArea] = useState('all');
 
@@ -58,7 +61,7 @@ const matchesMaterial =
           setSelectedArea={setSelectedArea}
           totalCount={filteredProjects.length}
         />
-      <hr className="catalog__divider" />
+       <hr className="catalog__divider" />
 
         {/* Сетка проектов (Карточки) */}
         <div className="catalog__content container">
@@ -74,17 +77,15 @@ const matchesMaterial =
               <p className="custom-project__text">
                 Спроектируем дом с нуля под ваш участок и бюджет. Эскизный проект — бесплатно при заключении договора.
               </p>
-              <button
-                type="button"
-                className="button btn--primary btn--large"
-                onClick={() => console.log('Открыть форму обсуждения проекта')}
-              >
-                Обсудить свой проект
-              </button>
+             <Link
+               to="/contacts"
+               className="button btn--primary btn--large"
+             >
+               Обсудить свой проект
+             </Link>
             </div>
           </div>
         </section>
-
 
       <Footer />
     </div>

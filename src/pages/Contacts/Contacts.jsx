@@ -1,76 +1,18 @@
 
 import React, { useState } from 'react';
-import './Contacts.scss';
+import siteData from '../../siteData.jsx';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import './Contacts.scss';
 
-const contactItems = [
-  {
-    id: 1,
-    icon: '📞', // Можно заменить на SVG или иконку Phone из lucide-react
-    label: 'Телефон',
-    value: '+7 (495) 120-45-67',
-    href: 'tel:+74951204567',
-    note: 'Ежедневно с 9:00 до 21:00',
-  },
-  {
-    id: 2,
-    icon: '✉️', // Mail
-    label: 'Почта',
-    value: 'privet@domstroy.example',
-    href: 'mailto:privet@domstroy.example',
-    note: 'Ответим в течение дня',
-  },
-  {
-    id: 3,
-    icon: '📍', // MapPin
-    label: 'Шоурум',
-    value: 'Московская обл., пос. Лесной, ул. Строителей, 12',
-    href: null,
-    note: 'Экскурсии по записи',
-  },
-  {
-    id: 4,
-    icon: '🕒', // Clock
-    label: 'Режим работы',
-    value: 'Пн–Сб: 9:00–20:00, Вс: 10:00–18:00',
-    href: null,
-    note: 'Заявки принимаем круглосуточно',
-  },
-];
+// Безопасно извлекаем массивы из siteData.jsx
+const contactItems = Array.isArray(siteData?.contactItems)
+  ? siteData.contactItems
+  : [];
 
-const faqData = [
-  {
-    id: 1,
-    question: 'Сколько времени занимает строительство?',
-    answer:
-      'В среднем строительство каркасного дома под ключ занимает от 2 до 4 месяцев в зависимости от площади и сложности проекта.',
-  },
-  {
-    id: 2,
-    question: 'Цена в договоре действительно не меняется?',
-    answer:
-      'Да. Мы фиксируем смету после геологии участка и утверждения проекта. Если дорожают материалы — это наш риск, а не ваш.',
-  },
-  {
-    id: 3,
-    question: 'Можно ли строить в ипотеку или с маткапиталом?',
-    answer:
-      'Да, мы аккредитованы в ведущих банках и работаем со всеми льготными ипотечными программами, а также с материнским капиталом.',
-  },
-  {
-    id: 4,
-    question: 'У нас уже есть участок. Что дальше?',
-    answer:
-      'Наш инженер бесплатно выедет на участок, оценит подъездные пути, уклон и грунты, после чего мы подберем подходящий фундамент и проект.',
-  },
-  {
-    id: 5,
-    question: 'Какая гарантия на дом?',
-    answer:
-      'Мы даем официальную гарантию 10 лет на конструктив дома и фундамент, прописанную в договоре.',
-  },
-];
+const faqData = Array.isArray(siteData?.faqData)
+  ? siteData.faqData
+  : [];
 
 export const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -99,11 +41,11 @@ export const Contacts = () => {
   return (
     <>
     <Header />
-    <main className="contacts-page">
+    <main className="contacts">
       {/* Шапка страницы */}
       <section className="contacts-header">
-        <div className="contacts-header__container">
-          <h1 className="contacts-header__title">Контакты</h1>
+        <div className="container">
+          <h1>Контакты</h1>
           <p className="contacts-header__subtitle">
             Оставьте заявку — перезвоним, ответим на вопросы и договоримся об
             экскурсии по готовым домам.
@@ -113,18 +55,18 @@ export const Contacts = () => {
 
       {/* Основной блок: Контакты слева + Форма справа */}
       <section className="contacts-main">
-        <div className="contacts-main__container">
+        <div className="contacts-main__container container">
           {/* Левая колонка: Карточки контактов */}
           <div className="contacts-info">
             {contactItems.map((item) => (
               <article className="contact-card" key={item.id}>
                 <div className="contact-card__icon-box">
-                  <span className="contact-card__icon" aria-hidden="true">
+                  <span className="contact-card__icon icon" aria-hidden="true">
                     {item.icon}
                   </span>
                 </div>
                 <div className="contact-card__body">
-                  <span className="contact-card__label">{item.label}</span>
+                  <p>{item.label}</p>
                   {item.href ? (
                     <a href={item.href} className="contact-card__value contact-card__value--link">
                       {item.value}
@@ -140,7 +82,7 @@ export const Contacts = () => {
 
           {/* Правая колонка: Форма обратной связи */}
           <div className="contact-form-box">
-            <h2 className="contact-form-box__title">Оставить заявку</h2>
+            <h3>Оставить заявку</h3>
             <p className="contact-form-box__subtitle">
               Перезвоним, проконсультируем и посчитаем смету. Это бесплатно.
             </p>
@@ -193,8 +135,8 @@ export const Contacts = () => {
                 />
               </div>
 
-              <button type="submit" className="contact-form__submit">
-                <span className="contact-form__submit-icon" aria-hidden="true">
+              <button type="submit" className="contact-form__submit button">
+                <span className="contact-form__submit-icon " aria-hidden="true">
                   ➤
                 </span>
                 <span>Отправить заявку</span>
@@ -209,10 +151,10 @@ export const Contacts = () => {
       </section>
 
       {/* Нижний блок: Частые вопросы (FAQ) */}
-      <section className="contacts-faq">
+      <section className="contacts-faq container">
         <div className="contacts-faq__container">
           <header className="section-header">
-            <h2 className="section-header__title">Частые вопросы</h2>
+            <h2>Частые вопросы</h2>
             <p className="section-header__subtitle">
               То, о чём спрашивают чаще всего
             </p>

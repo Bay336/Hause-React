@@ -14,7 +14,7 @@ const Excursion = () => {
         </div>
       
         <Button className='excursion__btn button'>
-            <Link to='./project'>
+            <Link to='./contacts'>
              <span>Записаться на экскурсию</span>
              <span className='btn-arrow'> →</span>
              </Link>

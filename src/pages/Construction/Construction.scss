@@ -2,13 +2,6 @@
 @use '../../styles/helpers/' as *;
 
 
-
-.construction {
-  background-color: #141414;
-  color: #ffffff;
-
-}
-
 // 1. Hero
 .hero {
   position: relative;
@@ -122,8 +115,8 @@
 
 // 3. Calculator
 .calculator {
-  padding: 80px 0;
-  background-color: #191817;
+  padding: to-rem(80) 0;
+  background-color: var(--color-black);
 
   &__grid {
     display: grid;
@@ -146,28 +139,28 @@
     margin: 0 0 32px;
     font-size: 15px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-subtitle);
   }
 
   &__field {
-    margin-bottom: 24px;
+    margin-bottom: to-rem(24);
   }
 
   &__label {
     display: block;
     margin-bottom: 10px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-subtitle);
   }
 
   &__select {
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background-color: #242220;
-    color: #ffffff;
-    font-size: 15px;
+    border: 1px solid var( --color-border);
+    background-color: var(--color-brown);
+    color: var(--color-title);
+    font-size: to-rem(15);
     cursor: pointer;
   }
 
@@ -179,57 +172,58 @@
 
   &__area-btn {
     padding: 10px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background-color: #242220;
-    color: #ffffff;
-    font-size: 14px;
+    border-radius: var(--radius-btn);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-brown);
+    color: var(--color-title);
+    font-size: to-rem(14);
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      border-color: #f28c1e;
+      border-color: var(--color-accent);
     }
 
     &.is-active {
-      background-color: #f28c1e;
-      border-color: #f28c1e;
-      color: #141414;
+      background-color: var(--color-accent);
+      border-color: var(--color-brown);
+      color: var(--color-black);
       font-weight: 600;
     }
   }
 
   &__note {
-    margin: 16px 0 0;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
+    margin: to-rem(16) 0 0;
+    font-size: to-rem(13);
+    color: var(--color-subtitle);
   }
 
   &__disclaimer {
-    margin: 40px 0 0;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.45);
+    margin: to-rem(40) 0 0;
+    font-size: to-rem(12);
+    color: var(--color-subtitle);
   }
 }
 
 .result-card {
-  background-color: #f28c1e;
-  color: #141414;
-  border-radius: 16px;
-  padding: 32px;
+  background-color: var(--color-accent);
+  color: var(--color-black);
+  border-radius: var(--radius-btn);
+  padding: to-rem(32);
 
   &__badge {
     display: inline-block;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background-color: rgba(20, 20, 20, 0.12);
-    font-size: 12px;
+    padding: to-rem(4) to-rem(12);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-border);
+    font-size: to-rem(12);
+    color: var(--color-subtitle);
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: to-rem(20);
   }
 
   &__label {
-    font-size: 14px;
+    font-size: to-rem(13);
     opacity: 0.85;
     margin-bottom: 8px;
   }
@@ -237,12 +231,11 @@
   &__price {
     font-size: clamp(28px, 3vw, 36px);
     font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 20px;
+    margin-bottom: to-rem(20);
   }
 
   &__duration {
-    font-size: 14px;
+    font-size: to-rem(14);
     margin-bottom: 8px;
   }
 
@@ -264,5 +257,21 @@
       background-color: var(--color-black);
       opacity: 0.9;
     }
+  }
+}
+.custom-select__menu {
+   &__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background-color: var(--color-black);
+    border: 1px solid var(--color-subtitle);
+    border-radius: var(--radius-btn); /* Полное скругление выпадающего окна */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    z-index: 50;
   }
 }
