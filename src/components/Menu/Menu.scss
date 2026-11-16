@@ -9,7 +9,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: to-rem(18);
+
+  
 
      @include mobile {
       flex-direction: column;
@@ -39,4 +40,24 @@
       }
   }
 
+}
+/* выподающее меню */
+.is-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Запасной вариант для старых браузеров */
+  ;
+  overflow-y: auto; /* Разрешает прокрутку, если пункты не влезут на маленьком экране */
+  background-color: var(--color-border);
+  /* Выравнивание пунктов меню (чтобы приподнять их вверх) */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 250px; /* Настройте отступ сверху под свой дизайн */
+
+     a {
+       font-size: to-rem(16)
+     }
 }
